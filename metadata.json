@@ -1,0 +1,6 @@
+{
+  "name": "Vizzy",
+  "description": "Visual Traffic Intelligence: YOLO26 & BoT-SORT Computer Vision Analytics for Vehicle Flow and Safety.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
