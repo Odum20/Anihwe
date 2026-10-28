@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, Terminal, LayoutDashboard, Map, Info, ChevronRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import { AboutSection } from './AboutSection';
 import { TrafficSignIcon } from './TrafficSignIcon';
 
 interface MobileSidePanelProps {
@@ -10,6 +9,7 @@ interface MobileSidePanelProps {
   activeView: 'dashboard' | 'zones' | 'playground';
   setActiveView: (view: 'dashboard' | 'zones' | 'playground') => void;
   onOpenPythonScript: () => void;
+  onOpenAbout: () => void;
 }
 
 export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
@@ -18,6 +18,7 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
   activeView,
   setActiveView,
   onOpenPythonScript,
+  onOpenAbout,
 }) => {
   const { theme } = useTheme();
   const isLight = theme === 'light';
@@ -38,7 +39,7 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
     <>
       {/* Overlay */}
       <div 
-        className={`fixed inset-0 z-[60] bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-[60] bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
@@ -46,7 +47,7 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
 
       {/* Panel */}
       <aside 
-        className={`fixed top-0 left-0 bottom-0 z-[70] w-[85%] max-w-[320px] shadow-2xl transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) md:hidden ${
+        className={`fixed top-0 left-0 bottom-0 z-[70] w-[85%] max-w-[320px] shadow-2xl transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) lg:hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ${
           isLight 
@@ -174,9 +175,21 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
               <ChevronRight className="w-4 h-4 opacity-20 transition-transform group-hover:translate-x-1" />
             </button>
 
-            <div className={`mt-8 pt-8 border-t ${isLight ? 'border-slate-200' : 'border-slate-800'}`}>
-              <AboutSection />
-            </div>
+            <button
+              onClick={() => {
+                onOpenAbout();
+                onClose();
+              }}
+              className={`w-full flex items-center justify-between p-3.5 rounded-xl transition-all duration-200 group ${
+                isLight ? 'text-slate-600 hover:bg-slate-100' : 'text-slate-400 hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <Info className="w-5 h-5" />
+                <span className="font-bold">About Vizzy & Founder</span>
+              </div>
+              <ChevronRight className="w-4 h-4 opacity-20 transition-transform group-hover:translate-x-1" />
+            </button>
           </nav>
 
           {/* Footer */}

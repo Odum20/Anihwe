@@ -94,7 +94,7 @@ export const PlaygroundView: React.FC = () => {
       <div className={`p-6 rounded-2xl border transition-all duration-300 ${
         isLight ? 'bg-white border-slate-200' : 'bg-slate-900 border-slate-800'
       }`}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <h1 className={`text-2xl font-black tracking-tighter ${isLight ? 'text-slate-900' : 'text-white'}`}>
               VISION PLAYGROUND

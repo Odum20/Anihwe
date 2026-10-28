@@ -51,6 +51,19 @@
 
 ---
 
+## ⚡ Deploy to Vercel
+
+Vizzy is pre-configured with `vercel.json` and `.npmrc` for 1-click zero-config Vercel deployment:
+
+1. Import your GitHub repository to **[Vercel](https://vercel.com)**.
+2. Framework Preset: **Vite** (auto-detected).
+3. Root Directory: `./` (default).
+4. Environment Variables:
+   - Add `VITE_OPENROUTER_API_KEY` (optional for vision playground).
+5. Click **Deploy**. Build will complete without peer dependency conflicts.
+
+---
+
 ## 💻 Standalone Python Tracker (`yolo_botsort_tracker.py`)
 
 Run vision analytics on any local MP4 or camera stream using Python:

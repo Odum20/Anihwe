@@ -41,7 +41,7 @@ export const DetectionZonesView: React.FC<DetectionZonesViewProps> = ({
       </div>
 
       {/* Zones Calibration Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3.5">
         {zones.map((zone) => (
           <div key={zone.id} className={cardClasses}>
             <div className="flex items-center justify-between">

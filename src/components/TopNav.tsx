@@ -22,7 +22,7 @@ export const TopNav: React.FC<TopNavProps> = ({
   const isLight = theme === 'light';
 
   return (
-    <header className={`flex items-center justify-between gap-8 px-4 md:px-6 py-3 border-b backdrop-blur-md shrink-0 transition-colors duration-300 z-50 sticky top-0 ${
+    <header className={`flex items-center justify-between gap-8 px-4 lg:px-6 py-3 border-b backdrop-blur-md shrink-0 transition-colors duration-300 z-50 sticky top-0 ${
       isLight 
         ? 'bg-slate-50/95 border-slate-200/90 shadow-[0_2px_4px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.9)]' 
         : 'bg-slate-900/95 border-slate-800 shadow-lg'
@@ -31,7 +31,7 @@ export const TopNav: React.FC<TopNavProps> = ({
       <div className="flex items-center gap-3 shrink-0">
         <button 
           onClick={onOpenMobileMenu}
-          className={`md:hidden p-1 rounded-lg transition-all active:scale-95 flex items-center justify-center ${
+          className={`lg:hidden p-1 rounded-lg transition-all active:scale-95 flex items-center justify-center ${
             isLight ? 'hover:bg-slate-200/50 text-slate-900' : 'hover:bg-slate-800 text-white'
           }`}
           title="Open Side Menu"
@@ -39,17 +39,17 @@ export const TopNav: React.FC<TopNavProps> = ({
           <TrafficSignIcon scale={0.34} />
         </button>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <TrafficSignIcon scale={0.38} />
         </div>
         
         <div className="flex flex-col">
-          <span className={`text-base md:text-lg font-black tracking-tighter uppercase whitespace-nowrap ${
+          <span className={`text-base lg:text-lg font-black tracking-tighter uppercase whitespace-nowrap ${
             isLight ? 'text-slate-900' : 'text-white'
           }`}>
             VIZZY
           </span>
-          <span className={`hidden md:block text-[10px] font-bold tracking-widest uppercase opacity-50 ${
+          <span className={`hidden lg:block text-[10px] font-bold tracking-widest uppercase opacity-50 ${
             isLight ? 'text-slate-500' : 'text-slate-400'
           }`}>
             Computer Vision Intelligence
@@ -58,7 +58,7 @@ export const TopNav: React.FC<TopNavProps> = ({
       </div>
 
       {/* Zone 2: Navigation Links */}
-      <nav className={`hidden md:flex items-center gap-6 text-sm font-medium ${
+      <nav className={`hidden lg:flex items-center gap-6 text-sm font-medium ${
         isLight ? 'text-slate-600' : 'text-slate-400'
       }`}>
         <button
@@ -117,7 +117,7 @@ export const TopNav: React.FC<TopNavProps> = ({
 
         <button
           onClick={() => setActiveView('playground')}
-          className={`hidden md:flex px-3.5 py-2 text-xs font-bold tracking-tight whitespace-nowrap shrink-0 items-center gap-1.5 cursor-pointer rounded-lg transition-all duration-150 active:translate-y-px ${
+          className={`hidden lg:flex px-3.5 py-2 text-xs font-bold tracking-tight whitespace-nowrap shrink-0 items-center gap-1.5 cursor-pointer rounded-lg transition-all duration-150 active:translate-y-px ${
             isLight
               ? 'bg-[#3d3e40] hover:bg-[#2b2c2e] text-white shadow-lg'
               : 'bg-amber-400 hover:bg-amber-300 text-slate-950 shadow-lg shadow-amber-400/20'

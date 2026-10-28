@@ -137,7 +137,7 @@ export default function App() {
       {/* Poking Chevron for Mobile */}
       <button 
         onClick={() => setIsMobileMenuOpen(true)}
-        className={`md:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[55] w-6 h-16 flex items-center justify-center rounded-r-xl shadow-lg border-y border-r transition-all active:scale-95 ${
+        className={`lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[55] w-6 h-16 flex items-center justify-center rounded-r-xl shadow-lg border-y border-r transition-all active:scale-95 ${
           theme === 'light' 
             ? 'bg-[#3d3e40] border-[#4d4e50] text-white shadow-slate-400/20' 
             : 'bg-amber-400 border-amber-500 text-slate-950 shadow-amber-400/20'
@@ -154,10 +154,11 @@ export default function App() {
         activeView={activeView}
         setActiveView={setActiveView}
         onOpenPythonScript={() => setIsPythonScriptOpen(true)}
+        onOpenAbout={() => setIsAboutModalOpen(true)}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full space-y-4">
+      <main className="flex-1 p-4 lg:p-6 max-w-7xl mx-auto w-full space-y-4">
         {activeView === 'dashboard' && (
           <>
             {/* 4-Card Telemetry Bar */}
