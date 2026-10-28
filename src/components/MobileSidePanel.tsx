@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import { X, Terminal, LayoutDashboard, Map, Info, ChevronRight } from 'lucide-react';
+import { X, Terminal, LayoutDashboard, Map, Info, ChevronRight, Home } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { TrafficSignIcon } from './TrafficSignIcon';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface MobileSidePanelProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: 'dashboard' | 'zones' | 'playground';
-  setActiveView: (view: 'dashboard' | 'zones' | 'playground') => void;
+  activeView: 'landing' | 'dashboard' | 'zones' | 'playground';
+  setActiveView: (view: 'landing' | 'dashboard' | 'zones' | 'playground') => void;
   onOpenPythonScript: () => void;
   onOpenAbout: () => void;
 }
@@ -60,13 +61,19 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
           <div className={`p-6 flex items-center justify-between border-b ${
             isLight ? 'border-slate-200 bg-white' : 'border-slate-800 bg-slate-900/50'
           }`}>
-            <div className="flex items-center gap-2.5">
+            <button 
+              onClick={() => {
+                setActiveView('landing');
+                onClose();
+              }}
+              className="flex items-center gap-2.5 text-left cursor-pointer"
+            >
               <TrafficSignIcon scale={0.34} />
               <div className="flex flex-col">
                 <span className={`text-lg font-black tracking-tighter uppercase ${
                   isLight ? 'text-slate-900' : 'text-white'
                 }`}>
-                  VIZZY
+                  ANIHWƐ
                 </span>
                 <span className={`text-[9px] font-bold tracking-wider uppercase opacity-50 ${
                   isLight ? 'text-slate-500' : 'text-slate-400'
@@ -74,7 +81,7 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
                   Computer Vision OS
                 </span>
               </div>
-            </div>
+            </button>
             <button 
               onClick={onClose}
               className={`p-2 rounded-full transition-colors ${
@@ -87,6 +94,30 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
 
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+            <button
+              onClick={() => {
+                setActiveView('landing');
+                onClose();
+              }}
+              className={`w-full flex items-center justify-between p-3.5 rounded-xl transition-all duration-200 group ${
+                activeView === 'landing'
+                  ? isLight 
+                    ? 'bg-[#3d3e40] text-white shadow-lg' 
+                    : 'bg-amber-400 text-slate-950 shadow-lg shadow-amber-400/20'
+                  : isLight
+                    ? 'text-slate-600 hover:bg-slate-100'
+                    : 'text-slate-400 hover:bg-slate-800'
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <Home className="w-5 h-5" />
+                <span className="font-bold">Home Overview</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
+                activeView === 'landing' ? 'opacity-50' : 'opacity-20'
+              }`} />
+            </button>
+
             <button
               onClick={() => {
                 setActiveView('dashboard');
@@ -186,20 +217,21 @@ export const MobileSidePanel: React.FC<MobileSidePanelProps> = ({
             >
               <div className="flex items-center gap-3">
                 <Info className="w-5 h-5" />
-                <span className="font-bold">About Vizzy & Founder</span>
+                <span className="font-bold">About ANIHWƐ & Founder</span>
               </div>
               <ChevronRight className="w-4 h-4 opacity-20 transition-transform group-hover:translate-x-1" />
             </button>
           </nav>
 
           {/* Footer */}
-          <div className={`p-6 text-center border-t ${
+          <div className={`p-6 text-center border-t space-y-3 flex flex-col items-center ${
             isLight ? 'border-slate-200 bg-white' : 'border-slate-800 bg-slate-900/50'
           }`}>
+            <PWAInstallButton className="w-full justify-center" />
             <p className={`text-[10px] font-bold tracking-widest uppercase opacity-40 ${
               isLight ? 'text-slate-950' : 'text-white'
             }`}>
-              Vizzy Vision OS v1.0.4
+              ANIHWƐ Vision OS v1.0.4
             </p>
           </div>
         </div>

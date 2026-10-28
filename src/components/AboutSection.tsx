@@ -14,12 +14,12 @@ export const AboutSection: React.FC = () => {
              style={{ borderColor: isLight ? 'rgba(15, 23, 42, 0.1)' : 'rgba(255, 255, 255, 0.1)' }}>
           <Info className={`w-5 h-5 ${isLight ? 'text-slate-900' : 'text-amber-400'}`} />
           <h2 className={`text-xl font-extrabold tracking-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>
-            About Vizzy
+            About ANIHWƐ
           </h2>
         </div>
         <p className={`text-sm leading-relaxed font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-          Vizzy is a next-generation visual traffic intelligence platform. Leveraging state-of-the-art computer vision 
-          models including YOLO26 and BoT-SORT, Vizzy provides real-time monitoring of vehicle flow, 
+          ANIHWƐ is a next-generation visual traffic intelligence platform. Leveraging state-of-the-art computer vision 
+          models including YOLO26 and BoT-SORT, ANIHWƐ provides real-time monitoring of vehicle flow, 
           velocity vector analysis, and safety zone violation detection. Designed for researchers, 
           environmentalists, and urban planners to understand traffic patterns with zero-cost open-source infrastructure.
         </p>

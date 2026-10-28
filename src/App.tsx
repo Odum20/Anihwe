@@ -1,5 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { TopNav } from './components/TopNav';
+import { LandingHero } from './components/LandingHero';
+import { AppFooter } from './components/AppFooter';
 import { JunctionVideoViewport } from './components/JunctionVideoViewport';
 import { TelemetryCards } from './components/TelemetryCards';
 import { ViolationsFeed } from './components/ViolationsFeed';
@@ -10,7 +12,8 @@ import { InvalidTrafficModal } from './components/InvalidTrafficModal';
 import { AboutModal } from './components/AboutModal';
 import { MobileSidePanel } from './components/MobileSidePanel';
 import { PlaygroundView } from './components/PlaygroundView';
-import { ChevronRight } from 'lucide-react';
+import { PWAInstallButton } from './components/PWAInstallButton';
+import { ChevronRight, Sun, Moon } from 'lucide-react';
 import { useTheme } from './context/ThemeContext';
 import {
   IncidentAlert,
@@ -19,8 +22,8 @@ import {
 } from './types/traffic';
 
 export default function App() {
-  const { theme } = useTheme();
-  const [activeView, setActiveView] = useState<'dashboard' | 'zones' | 'playground'>('dashboard');
+  const { theme, toggleTheme } = useTheme();
+  const [activeView, setActiveView] = useState<'landing' | 'dashboard' | 'zones' | 'playground'>('landing');
   const [isPythonScriptOpen, setIsPythonScriptOpen] = useState<boolean>(false);
   const [selectedIncident, setSelectedIncident] = useState<IncidentAlert | null>(null);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState<boolean>(false);
@@ -125,14 +128,34 @@ export default function App() {
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${
       theme === 'light' ? 'bg-slate-100/90 text-slate-800' : 'bg-slate-950 text-slate-100'
     }`}>
-      {/* Top Navigation */}
-      <TopNav
-        activeView={activeView}
-        setActiveView={setActiveView}
-        onOpenPythonScript={() => setIsPythonScriptOpen(true)}
-        onOpenAbout={() => setIsAboutModalOpen(true)}
-        onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
-      />
+      {/* Top Navigation - Hidden on landing page for seamless hero immersion */}
+      {activeView !== 'landing' && (
+        <TopNav
+          activeView={activeView}
+          setActiveView={setActiveView}
+          onOpenPythonScript={() => setIsPythonScriptOpen(true)}
+          onOpenAbout={() => setIsAboutModalOpen(true)}
+          onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
+        />
+      )}
+
+      {/* Floating Sticky Theme Toggle & PWA Install for Landing Page */}
+      {activeView === 'landing' && (
+        <div className="fixed top-4 left-4 z-50 flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className={`p-2.5 rounded-xl transition-all duration-200 cursor-pointer border shadow-lg backdrop-blur-md flex items-center justify-center active:scale-95 ${
+              theme === 'light' 
+                ? 'bg-white/90 border-slate-200 text-slate-800 hover:bg-white shadow-slate-900/10' 
+                : 'bg-slate-900/90 border-slate-700 text-amber-400 hover:bg-slate-800 shadow-slate-950/50'
+            }`}
+            title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+          >
+            {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+          </button>
+          <PWAInstallButton variant="compact" />
+        </div>
+      )}
 
       {/* Poking Chevron for Mobile */}
       <button 
@@ -158,9 +181,17 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 p-4 lg:p-6 max-w-7xl mx-auto w-full space-y-4">
+      <main className="flex-1 w-full flex flex-col">
+        {activeView === 'landing' && (
+          <LandingHero 
+            onExploreDashboard={() => setActiveView('dashboard')}
+            onExplorePlayground={() => setActiveView('playground')}
+            onOpenAbout={() => setIsAboutModalOpen(true)}
+          />
+        )}
+
         {activeView === 'dashboard' && (
-          <>
+          <div className="p-4 lg:p-6 max-w-7xl mx-auto w-full space-y-4">
             {/* 4-Card Telemetry Bar */}
             <TelemetryCards telemetry={telemetry} />
 
@@ -187,17 +218,24 @@ export default function App() {
                 />
               </div>
             </div>
-          </>
+          </div>
         )}
 
         {activeView === 'zones' && (
-          <DetectionZonesView zones={zones} setZones={setZones} />
+          <div className="p-4 lg:p-6 max-w-7xl mx-auto w-full">
+            <DetectionZonesView zones={zones} setZones={setZones} />
+          </div>
         )}
 
         {activeView === 'playground' && (
-          <PlaygroundView />
+          <div className="p-4 lg:p-6 max-w-7xl mx-auto w-full">
+            <PlaygroundView />
+          </div>
         )}
       </main>
+
+      {/* Seamless App Footer across all pages */}
+      <AppFooter onOpenAbout={() => setIsAboutModalOpen(true)} />
 
       {/* Modals */}
       <IncidentDetailModal

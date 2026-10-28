@@ -36,14 +36,14 @@ export const PlaygroundView: React.FC = () => {
         isOpen: true,
         type: 'invalid_video',
         title: 'Input Integrity Notice',
-        message: 'The visual data provided appears to be fragmented or in a format Vizzy cannot synthesize. Please ensure you upload a high-fidelity MP4 to maintain logical coherence.'
+        message: 'The visual data provided appears to be fragmented or in a format ANIHWƐ cannot synthesize. Please ensure you upload a high-fidelity MP4 to maintain logical coherence.'
       });
     } else {
       setErrorModal({
         isOpen: true,
         type: 'task_impossible',
         title: 'Cognitive Mismatch',
-        message: 'The command issued does not correlate with the visual context detected. Vizzy cannot "count cattle" in a high-density urban traffic corridor. Please align your intent with the scene.'
+        message: 'The command issued does not correlate with the visual context detected. ANIHWƐ cannot "count cattle" in a high-density urban traffic corridor. Please align your intent with the scene.'
       });
     }
   };

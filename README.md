@@ -1,8 +1,8 @@
-# Vizzy – Computer Vision Intelligence Platform
+# ANIHWƐ – Computer Vision Intelligence Platform
 
-![Vizzy Logo](https://res.cloudinary.com/dukipuswv/image/upload/f_webp,q_auto,w_240/v1793198289/vizzy_tqgjgz.png)
+![ANIHWƐ Logo](https://res.cloudinary.com/dukipuswv/image/upload/f_webp,q_auto,w_240/v1793198289/vizzy_tqgjgz.png)
 
-> **Vizzy** is a state-of-the-art Computer Vision & Safety Analytics platform powered by **YOLO26** deep object detection, **BoT-SORT** multi-object tracking, and **OpenRouter LLM/Vision** intelligence bridges. Designed for real-time traffic monitoring, spatial hazard telemetry, and interactive computer vision prompts.
+> **ANIHWƐ** is a state-of-the-art Computer Vision & Safety Analytics platform powered by **YOLO26** deep object detection, **BoT-SORT** multi-object tracking, and **OpenRouter LLM/Vision** intelligence bridges. Designed for real-time traffic monitoring, spatial hazard telemetry, and interactive computer vision prompts.
 
 ---
 
@@ -28,8 +28,8 @@
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/vizzy-vision-intelligence.git
-   cd vizzy-vision-intelligence
+   git clone https://github.com/your-username/anihwe-vision-intelligence.git
+   cd anihwe-vision-intelligence
    ```
 
 2. **Install Dependencies**:
@@ -53,7 +53,7 @@
 
 ## ⚡ Deploy to Vercel
 
-Vizzy is pre-configured with `vercel.json` and `.npmrc` for 1-click zero-config Vercel deployment:
+ANIHWƐ is pre-configured with `vercel.json` and `.npmrc` for 1-click zero-config Vercel deployment:
 
 1. Import your GitHub repository to **[Vercel](https://vercel.com)**.
 2. Framework Preset: **Vite** (auto-detected).
